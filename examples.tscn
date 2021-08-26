@@ -5,3 +5,4 @@
 [node name="Examples" type="Node2D"]
 
 [node name="YesNo" parent="." instance=ExtResource( 1 )]
+visible = false
