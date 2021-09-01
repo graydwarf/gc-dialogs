@@ -1,8 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://yesno.tscn" type="PackedScene" id=1]
+[ext_resource path="res://yes-no.tscn" type="PackedScene" id=1]
 
-[node name="Examples" type="Node2D"]
+[node name="examples" type="Node2D"]
 
-[node name="YesNo" parent="." instance=ExtResource( 1 )]
-visible = false
+[node name="yes-no" parent="." instance=ExtResource( 1 )]

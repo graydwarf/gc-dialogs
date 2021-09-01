@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/color3.png" type="Texture" id=1]
 [ext_resource path="res://assets/smoke3.png" type="Texture" id=2]
 
-[node name="YesNo" type="Node2D"]
+[node name="yes-no" type="Node2D"]
 
 [node name="color-3" type="Sprite" parent="."]
 position = Vector2( 113, 119 )
