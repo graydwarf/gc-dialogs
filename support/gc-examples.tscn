@@ -4,4 +4,4 @@
 
 [node name="GC-Examples" type="Node2D"]
 
-[node name="stranger-things" parent="." instance=ExtResource( 2 )]
+[node name="yes-no" parent="." instance=ExtResource( 2 )]
