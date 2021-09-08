@@ -15,10 +15,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="gc-dialogs"
-run/main_scene="res://examples.tscn"
-config/icon="res://icon.png"
+config/name="gc-shaders"
+run/main_scene="res://dialog-examples.tscn"
 
-[rendering]
+[autoload]
 
-environment/default_environment="res://default_env.tres"
+DialogSignals="*res://singletons/dialog-signals.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false

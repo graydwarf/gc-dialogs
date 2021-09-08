@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://examples/yes-no.tscn" type="PackedScene" id=1]
+[ext_resource path="res://support/examples.gd" type="Script" id=3]
+
+[node name="examples" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer"]
+margin_right = 200.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/VBoxContainer/HBoxContainer"]
+self_modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+margin_right = 200.0
+margin_bottom = 600.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 200, 0 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer"]
+self_modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+margin_left = 212.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="yes-no" parent="HSplitContainer/PanelContainer" instance=ExtResource( 1 )]
+visible = false
