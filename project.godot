@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="gc-shaders"
+config/name="gc-dialogs"
 run/main_scene="res://dialog-examples.tscn"
 
 [autoload]
