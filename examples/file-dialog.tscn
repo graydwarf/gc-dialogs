@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://examples/file-dialog.gd" type="Script" id=1]
+
+[node name="File Dialog" type="Container"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResponseLabel" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 250.0
+margin_bottom = 50.0
+valign = 1
+
+[node name="OpenFileDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 90.0
+text = "Open File Dialog"
+
+[node name="OpenFilesDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 150.0
+margin_bottom = 140.0
+text = "Open Files Dialog"
+
+[node name="OpenDirDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 150.0
+margin_bottom = 190.0
+text = "Open Directory Dialog"
+
+[node name="OpenAnyDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 200.0
+margin_right = 204.0
+margin_bottom = 240.0
+text = "Open Anything Dialog"
+
+[node name="OpenSaveFileDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 250.0
+margin_right = 204.0
+margin_bottom = 290.0
+text = "Open Select Save File Path Dialog"
+
+[node name="MouseBlockPanelContainer" type="PanelContainer" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.745098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 700.0
+margin_bottom = 450.0
+popup_exclusive = true
+window_title = "Open a File"
+dialog_hide_on_ok = true
+mode = 0
+show_hidden_files = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="OpenFileDialogButton" to="." method="_on_OpenFileDialogButton_pressed"]
+[connection signal="pressed" from="OpenFilesDialogButton" to="." method="_on_OpenFilesDialogButton_pressed"]
+[connection signal="pressed" from="OpenDirDialogButton" to="." method="_on_OpenDirDialogButton_pressed"]
+[connection signal="pressed" from="OpenAnyDialogButton" to="." method="_on_OpenAnyDialogButton_pressed"]
+[connection signal="pressed" from="OpenSaveFileDialogButton" to="." method="_on_OpenSaveFileDialogButton_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="files_selected" from="FileDialog" to="." method="_on_FileDialog_files_selected"]
+[connection signal="visibility_changed" from="FileDialog" to="." method="_on_FileDialog_visibility_changed"]

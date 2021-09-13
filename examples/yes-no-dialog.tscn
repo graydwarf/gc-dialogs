@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://examples/yes-no-dialog.gd" type="Script" id=1]
+
+[node name="Yes-No Dialog" type="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResponseLabel" type="Label" parent="."]
+margin_left = 175.0
+margin_top = 50.0
+margin_right = 375.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 200, 40 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 90.0
+text = "Open Dialog"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseBlockPanelContainer" type="PanelContainer" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.745098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 14.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="YesNoWindowDialog" type="WindowDialog" parent="."]
+margin_left = 400.0
+margin_top = 200.0
+margin_right = 650.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 250, 100 )
+popup_exclusive = true
+window_title = "Cake?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="Button" parent="YesNoWindowDialog"]
+margin_left = 42.189
+margin_top = 40.0
+margin_right = 106.189
+margin_bottom = 77.0
+text = "Yes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoButton" type="Button" parent="YesNoWindowDialog"]
+margin_left = 150.74
+margin_top = 40.0
+margin_right = 214.74
+margin_bottom = 77.0
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionLabel" type="Label" parent="YesNoWindowDialog"]
+margin_left = 68.0
+margin_top = 9.0
+margin_right = 179.0
+margin_bottom = 25.0
+text = "Do you like cake?"
+valign = 1
+[connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]
+[connection signal="pressed" from="YesNoWindowDialog/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="YesNoWindowDialog/NoButton" to="." method="_on_NoButton_pressed"]

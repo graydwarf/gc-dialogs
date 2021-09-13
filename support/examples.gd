@@ -10,6 +10,13 @@ func _ready() -> void:
 func InitSignals():
 	var _ignore = DialogSignals.connect("LoadExample", self, "LoadExampleHandler")
 
+func LoadExampleHandler(exampleName):
+	HideAllExamples()
+	for node in _panelContainer.get_children():
+		if node.name == exampleName:
+			node.visible = true
+			break
+
 func LoadExampleNodes():
 	for node in _panelContainer.get_children():
 		var exampleNode = load("res://support/example-node.tscn")
@@ -19,11 +26,5 @@ func LoadExampleNodes():
 
 func HideAllExamples():
 	for node in _panelContainer.get_children():
+		node.Reset()
 		node.visible = false
-
-func LoadExampleHandler(exampleName):
-	HideAllExamples()
-	for node in _panelContainer.get_children():
-		if node.name == exampleName:
-			node.visible = true
-			break
