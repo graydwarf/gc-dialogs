@@ -3,17 +3,12 @@ extends Container
 func SetResponse(response):
 	$ResponseLabel.text = response
 
-func ShowDialog():
-	ShowMouseBlocker()
-
+func ShowWindowsDialog():
 	# This is required in order to setup the popup_hide signal
 	# triggered by pressing the Cancel button. This approach
 	# also prevents the user from clicking behind the dialog
 	# when Exclusive is enabled.
-	$ConfirmationDialog.call_deferred("popup")
-
-func HideDialog():
-	$ConfirmationDialog.visible = false
+	$WindowDialog.call_deferred("popup")
 
 func ShowMouseBlocker():
 	$MouseBlockPanelContainer.visible = true
@@ -24,26 +19,35 @@ func HideMouseBlocker():
 # Apparently this signal can only be setup right
 # when the dialog is about to be shown.
 func SetupPopupHideSignal():
-	$ConfirmationDialog.connect("popup_hide",self, "DialogCanceled")
+	$WindowDialog.connect("popup_hide",self, "CloseDialog")
 
-func DialogCanceled():
+func CloseDialog():
 	HideMouseBlocker()
+	HideDialog()
 
-func _on_ConfirmationDialog_confirmed() -> void:
-	SetResponse("We now own the users soul for eternity.")
+func HideDialog():
+	$WindowDialog.visible = false
+
+func _on_YesButton_pressed() -> void:
+	SetResponse("Yes, of course the user likes cake.")
+	CloseDialog()
+
+func _on_NoButton_pressed() -> void:
+	SetResponse("No!?!, there is clearly something wrong with this user!")
+	CloseDialog()
 
 func _on_OpenDialogButton_pressed() -> void:
-	SetResponse("Waiting for users response...")
-	ShowDialog()
+	SetResponse("")
+	ShowMouseBlocker()
+	ShowWindowsDialog()
 
-func _on_ConfirmationDialog_about_to_show() -> void:
+func _on_WindowDialog_about_to_show() -> void:
 	SetupPopupHideSignal()
 
 # godot-companion support functions below here
 func Reset():
-	HideDialog()
+	CloseDialog()
 	SetResponse("")
-	HideMouseBlocker()
 
 func Stop():
 	pass

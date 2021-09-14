@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://examples/file-dialog.gd" type="Script" id=1]
+[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=2]
 
 [node name="File Dialog" type="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,15 +55,7 @@ margin_right = 204.0
 margin_bottom = 290.0
 text = "Open Select Save File Path Dialog"
 
-[node name="MouseBlockPanelContainer" type="PanelContainer" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0.745098 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="MouseBlockPanelContainer" parent="." instance=ExtResource( 2 )]
 
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_left = 200.0
@@ -78,7 +75,7 @@ __meta__ = {
 [connection signal="pressed" from="OpenDirDialogButton" to="." method="_on_OpenDirDialogButton_pressed"]
 [connection signal="pressed" from="OpenAnyDialogButton" to="." method="_on_OpenAnyDialogButton_pressed"]
 [connection signal="pressed" from="OpenSaveFileDialogButton" to="." method="_on_OpenSaveFileDialogButton_pressed"]
+[connection signal="about_to_show" from="FileDialog" to="." method="_on_FileDialog_about_to_show"]
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
 [connection signal="files_selected" from="FileDialog" to="." method="_on_FileDialog_files_selected"]
-[connection signal="visibility_changed" from="FileDialog" to="." method="_on_FileDialog_visibility_changed"]

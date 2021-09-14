@@ -1,13 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://examples/yes-no-dialog.gd" type="Script" id=1]
+[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://examples/windows-dialog.gd" type="Script" id=2]
 
-[node name="Yes-No Dialog" type="Container"]
+[node name="WindowDialog" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,17 +34,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MouseBlockPanelContainer" type="PanelContainer" parent="."]
+[node name="MouseBlockPanelContainer" parent="." instance=ExtResource( 1 )]
 visible = false
-self_modulate = Color( 0, 0, 0, 0.745098 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 14.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="YesNoWindowDialog" type="WindowDialog" parent="."]
+[node name="WindowDialog" type="WindowDialog" parent="."]
 margin_left = 400.0
 margin_top = 200.0
 margin_right = 650.0
@@ -55,7 +49,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="YesButton" type="Button" parent="YesNoWindowDialog"]
+[node name="YesButton" type="Button" parent="WindowDialog"]
 margin_left = 42.189
 margin_top = 40.0
 margin_right = 106.189
@@ -65,7 +59,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NoButton" type="Button" parent="YesNoWindowDialog"]
+[node name="NoButton" type="Button" parent="WindowDialog"]
 margin_left = 150.74
 margin_top = 40.0
 margin_right = 214.74
@@ -75,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="QuestionLabel" type="Label" parent="YesNoWindowDialog"]
+[node name="QuestionLabel" type="Label" parent="WindowDialog"]
 margin_left = 68.0
 margin_top = 9.0
 margin_right = 179.0
@@ -83,5 +77,6 @@ margin_bottom = 25.0
 text = "Do you like cake?"
 valign = 1
 [connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]
-[connection signal="pressed" from="YesNoWindowDialog/YesButton" to="." method="_on_YesButton_pressed"]
-[connection signal="pressed" from="YesNoWindowDialog/NoButton" to="." method="_on_NoButton_pressed"]
+[connection signal="about_to_show" from="WindowDialog" to="." method="_on_WindowDialog_about_to_show"]
+[connection signal="pressed" from="WindowDialog/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="WindowDialog/NoButton" to="." method="_on_NoButton_pressed"]

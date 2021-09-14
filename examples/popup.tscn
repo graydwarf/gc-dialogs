@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://examples/popup.gd" type="Script" id=1]
+[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=2]
+
+[node name="Popup" type="Container"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenPopupButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 90.0
+text = "Open Popup"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseBlockPanelContainer" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Popup" type="Popup" parent="."]
+margin_left = 400.0
+margin_top = 200.0
+margin_right = 590.0
+margin_bottom = 348.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 14.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageLabel" type="Label" parent="Popup"]
+margin_left = 43.0
+margin_top = 21.0
+margin_right = 158.0
+margin_bottom = 35.0
+text = "My custom popup"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClosePopupButton" type="Button" parent="Popup"]
+margin_left = 56.0
+margin_top = 72.0
+margin_right = 147.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 50, 50 )
+text = "Close Popup"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="OpenPopupButton" to="." method="_on_OpenPopupButton_pressed"]
+[connection signal="about_to_show" from="Popup" to="." method="_on_Popup_about_to_show"]
+[connection signal="pressed" from="Popup/ClosePopupButton" to="." method="_on_ClosePopupButton_pressed"]
