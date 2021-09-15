@@ -23,37 +23,37 @@ margin_bottom = 50.0
 valign = 1
 
 [node name="OpenFileDialogButton" type="Button" parent="."]
-margin_left = 50.0
+margin_left = 51.0
 margin_top = 50.0
-margin_right = 150.0
+margin_right = 169.0
 margin_bottom = 90.0
 text = "Open File Dialog"
 
 [node name="OpenFilesDialogButton" type="Button" parent="."]
-margin_left = 50.0
+margin_left = 51.0
 margin_top = 100.0
-margin_right = 150.0
+margin_right = 176.0
 margin_bottom = 140.0
 text = "Open Files Dialog"
 
 [node name="OpenDirDialogButton" type="Button" parent="."]
-margin_left = 50.0
+margin_left = 51.0
 margin_top = 150.0
-margin_right = 150.0
+margin_right = 205.0
 margin_bottom = 190.0
 text = "Open Directory Dialog"
 
 [node name="OpenAnyDialogButton" type="Button" parent="."]
-margin_left = 50.0
+margin_left = 51.0
 margin_top = 200.0
-margin_right = 204.0
+margin_right = 205.0
 margin_bottom = 240.0
 text = "Open Anything Dialog"
 
 [node name="OpenSaveFileDialogButton" type="Button" parent="."]
-margin_left = 50.0
+margin_left = 51.0
 margin_top = 250.0
-margin_right = 204.0
+margin_right = 277.0
 margin_bottom = 290.0
 text = "Open Select Save File Path Dialog"
 
