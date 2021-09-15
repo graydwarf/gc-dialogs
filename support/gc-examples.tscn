@@ -7,14 +7,14 @@
 
 [node name="GC-Examples" type="Node2D"]
 
-[node name="Accept Dialog" parent="." instance=ExtResource( 3 )]
+[node name="accept-dialog" parent="." instance=ExtResource( 3 )]
 visible = false
 
-[node name="Confirmation Dialog" parent="." instance=ExtResource( 1 )]
+[node name="confirmation-dialog" parent="." instance=ExtResource( 1 )]
 visible = false
 
-[node name="File Dialog" parent="." instance=ExtResource( 4 )]
+[node name="file-dialog" parent="." instance=ExtResource( 4 )]
 visible = false
 
-[node name="WindowDialog" parent="." instance=ExtResource( 2 )]
+[node name="windows-dialog" parent="." instance=ExtResource( 2 )]
 visible = false

@@ -6,6 +6,8 @@
 [node name="File Dialog" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -56,6 +58,9 @@ margin_bottom = 290.0
 text = "Open Select Save File Path Dialog"
 
 [node name="MouseBlockPanelContainer" parent="." instance=ExtResource( 2 )]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
 
 [node name="FileDialog" type="FileDialog" parent="."]
 margin_left = 200.0
