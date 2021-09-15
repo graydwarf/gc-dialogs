@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://examples/confirmation-dialog.tscn" type="PackedScene" id=1]
 [ext_resource path="res://examples/windows-dialog.tscn" type="PackedScene" id=2]
-
-
+[ext_resource path="res://examples/accept-dialog.tscn" type="PackedScene" id=3]
+[ext_resource path="res://examples/file-dialog.tscn" type="PackedScene" id=4]
 
 [node name="GC-Examples" type="Node2D"]
 
-[node name="yes-no" parent="." instance=ExtResource( 2 )]
+[node name="Accept Dialog" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Confirmation Dialog" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="File Dialog" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="WindowDialog" parent="." instance=ExtResource( 2 )]
 visible = false
