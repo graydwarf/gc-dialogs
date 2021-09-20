@@ -1,5 +1,9 @@
 extends Container
 
+var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
+var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
+var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+
 func SetResponse(response):
 	$ResponseLabel.text = response
 
@@ -46,7 +50,7 @@ func Reset():
 	HideMouseBlocker()
 
 func GetSourcePath():
-	return DialogCommon._rootGitHubExamplePath + "confirmation-dialog.gd"
+	return _rootGitHubExamplePath + "confirmation-dialog.gd"
 
 func Stop():
 	pass

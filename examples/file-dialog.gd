@@ -1,5 +1,9 @@
 extends Container
 
+var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
+var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
+var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+
 # Note: The MODE_SAVE_FILE dialog is for selecting where you want
 # to eventually save a file. It does not save the actual file at
 # the time of selection. It only returns the path so you could
@@ -100,7 +104,7 @@ func Reset():
 	SetResponseText("")
 
 func GetSourcePath():
-	return DialogCommon._rootGitHubExamplePath + "file-dialog.gd"
+	return _rootGitHubExamplePath + "file-dialog.gd"
 
 func Stop():
 	pass

@@ -1,5 +1,9 @@
 extends Container
 
+var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
+var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
+var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+
 func _on_OpenPopupButton_pressed() -> void:
 	# This is required in order to setup the popup_hide signal
 	# triggered by pressing the Cancel button. This approach
@@ -38,7 +42,7 @@ func Reset():
 	CloseDialog()
 
 func GetSourcePath():
-	return DialogCommon._rootGitHubExamplePath + "popup.gd"
+	return _rootGitHubExamplePath + "popup.gd"
 
 func Stop():
 	pass

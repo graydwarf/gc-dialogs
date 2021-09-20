@@ -1,5 +1,9 @@
 extends Container
 
+var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
+var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
+var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+
 func ShowAcceptDialog():
 	SetResponseText("Waiting for user to accept notification...")
 
@@ -48,10 +52,7 @@ func Reset():
 	SetResponseText("")
 
 func GetSourcePath():
-	return DialogCommon._rootGitHubExamplePath + "accept-dialog.gd"
-
-func GetGitHubPath():
-	return DialogCommon._rootGitHubExamplePath + "accept-dialog.gd"
+	return _rootGitHubExamplePath + "accept-dialog.gd"
 
 func Stop():
 	pass

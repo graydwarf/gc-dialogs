@@ -21,7 +21,6 @@ run/main_scene="res://dialog-examples.tscn"
 [autoload]
 
 DialogSignals="*res://singletons/dialog-signals.gd"
-DialogCommon="*res://singletons/dialog-common.gd"
 
 [debug]
 
