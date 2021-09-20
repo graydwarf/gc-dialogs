@@ -21,7 +21,9 @@ run/main_scene="res://dialog-examples.tscn"
 [autoload]
 
 DialogSignals="*res://singletons/dialog-signals.gd"
+DialogCommon="*res://singletons/dialog-common.gd"
 
 [debug]
 
 gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false

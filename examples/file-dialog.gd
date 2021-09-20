@@ -99,6 +99,9 @@ func Reset():
 	CloseDialog()
 	SetResponseText("")
 
+func GetSourcePath():
+	return DialogCommon._rootGitHubExamplePath + "file-dialog.gd"
+
 func Stop():
 	pass
 

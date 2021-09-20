@@ -45,6 +45,9 @@ func Reset():
 	SetResponse("")
 	HideMouseBlocker()
 
+func GetSourcePath():
+	return DialogCommon._rootGitHubExamplePath + "confirmation-dialog.gd"
+
 func Stop():
 	pass
 

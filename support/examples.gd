@@ -8,7 +8,7 @@ func _ready() -> void:
 	LoadExampleNodes()
 
 func InitSignals():
-	var _ignore = DialogSignals.connect("LoadExample", self, "LoadExampleHandler")
+	DialogSignals.connect("LoadExample", self, "LoadExampleHandler")
 
 func LoadExampleHandler(exampleName):
 	HideAllExamples()

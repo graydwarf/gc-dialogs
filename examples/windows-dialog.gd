@@ -49,6 +49,9 @@ func Reset():
 	CloseDialog()
 	SetResponse("")
 
+func GetSourcePath():
+	return DialogCommon._rootGitHubExamplePath + "windows-dialog.gd"
+
 func Stop():
 	pass
 

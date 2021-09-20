@@ -37,6 +37,9 @@ func _on_Popup_about_to_show() -> void:
 func Reset():
 	CloseDialog()
 
+func GetSourcePath():
+	return DialogCommon._rootGitHubExamplePath + "popup.gd"
+
 func Stop():
 	pass
 
