@@ -16,7 +16,7 @@ __meta__ = {
 }
 
 [node name="ResponseLabel" type="Label" parent="."]
-margin_left = 175.0
+margin_left = 200.0
 margin_top = 50.0
 margin_right = 375.0
 margin_bottom = 90.0
@@ -31,7 +31,7 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 150.0
 margin_bottom = 90.0
-text = "Open Dialog"
+text = "Open Window Dialog"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -80,6 +80,7 @@ margin_right = 179.0
 margin_bottom = 25.0
 text = "Do you like cake?"
 valign = 1
+
 [connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]
 [connection signal="about_to_show" from="WindowDialog" to="." method="_on_WindowDialog_about_to_show"]
 [connection signal="pressed" from="WindowDialog/YesButton" to="." method="_on_YesButton_pressed"]

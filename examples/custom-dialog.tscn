@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://custom-dialog.gd" type="Script" id=1]
+[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://examples/mouse-block-panel-container.gd" type="Script" id=3]
+
+[node name="CustomDialog" type="Container"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResponseLabel" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 50.0
+margin_right = 400.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 200, 40 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpenDialogButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 90.0
+text = "Open Custom Dialog"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseBlockPanelContainer" type="PanelContainer" parent="." instance=ExtResource( 2 )]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.745098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CustomDialog" type="ColorRect" parent="."]
+visible = false
+margin_left = 225.0
+margin_top = 162.0
+margin_right = 549.0
+margin_bottom = 313.0
+color = Color( 0.164706, 0.164706, 0.164706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderColorRect" type="ColorRect" parent="CustomDialog"]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 147.0
+color = Color( 0.541176, 0.541176, 0.541176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundColorRect2" type="ColorRect" parent="CustomDialog"]
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 318.0
+margin_bottom = 145.0
+color = Color( 0.164706, 0.164706, 0.164706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="Button" parent="CustomDialog"]
+margin_left = 77.189
+margin_top = 78.0
+margin_right = 141.189
+margin_bottom = 115.0
+text = "Yes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoButton" type="Button" parent="CustomDialog"]
+margin_left = 185.74
+margin_top = 78.0
+margin_right = 249.74
+margin_bottom = 115.0
+text = "No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestionLabel" type="Label" parent="CustomDialog"]
+margin_left = 89.0
+margin_top = 39.0
+margin_right = 242.0
+margin_bottom = 70.0
+text = "Do you like ColorRects?"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]
+[connection signal="pressed" from="CustomDialog/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="CustomDialog/NoButton" to="." method="_on_NoButton_pressed"]
