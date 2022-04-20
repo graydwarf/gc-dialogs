@@ -1,16 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://examples/windows-dialog.tscn" type="PackedScene" id=1]
-[ext_resource path="res://examples/accept-dialog.tscn" type="PackedScene" id=2]
 [ext_resource path="res://support/examples.gd" type="Script" id=3]
-[ext_resource path="res://examples/confirmation-dialog.tscn" type="PackedScene" id=4]
-[ext_resource path="res://examples/file-dialog.tscn" type="PackedScene" id=5]
-[ext_resource path="res://examples/popup.tscn" type="PackedScene" id=6]
-[ext_resource path="res://examples/custom-dialog.tscn" type="PackedScene" id=7]
-[ext_resource path="res://examples/custom-dialog-2.tscn" type="PackedScene" id=8]
-[ext_resource path="res://examples/alert-dialog.tscn" type="PackedScene" id=9]
 
-[node name="examples" type="HBoxContainer"]
+[node name="Examples" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -68,49 +60,3 @@ margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Accept Dialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 2 )]
-visible = false
-
-[node name="Confirmation Dialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 4 )]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 805.0
-margin_bottom = 593.0
-
-[node name="File Dialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 5 )]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 805.0
-margin_bottom = 593.0
-
-[node name="Popup" parent="HSplitContainer/PanelContainer" instance=ExtResource( 6 )]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 805.0
-margin_bottom = 593.0
-
-[node name="WindowDialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 1 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 805.0
-margin_bottom = 593.0
-
-[node name="CustomDialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 7 )]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 805.0
-margin_bottom = 593.0
-
-[node name="CustomDialog2" parent="HSplitContainer/PanelContainer" instance=ExtResource( 8 )]
-visible = false
-
-[node name="AlertDialog" parent="HSplitContainer/PanelContainer" instance=ExtResource( 9 )]
-visible = false

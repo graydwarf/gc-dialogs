@@ -1,9 +1,14 @@
 extends Container
 
-var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
-var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
-var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+func _ready():
+	InitSignals()
 
+func InitSignals():
+	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+
+func gcCancelDialog():
+	CloseDialog()
+	
 func ShowAcceptDialog():
 	SetResponseText("Waiting for user to accept notification...")
 
@@ -45,17 +50,3 @@ func _on_ShowDialogButton_pressed() -> void:
 
 func _on_AcceptDialog_about_to_show() -> void:
 	SetupHideDialogSignal()
-
-# godot-companion support functions below here
-func Reset():
-	CloseDialog()
-	SetResponseText("")
-
-func GetSourcePath():
-	return _rootGitHubExamplePath + "accept-dialog.gd"
-
-func Stop():
-	pass
-
-func Start():
-	pass

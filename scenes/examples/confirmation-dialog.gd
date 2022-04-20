@@ -1,9 +1,14 @@
 extends Container
 
-var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
-var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
-var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+func _ready():
+	InitSignals()
 
+func InitSignals():
+	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+
+func gcCancelDialog():
+	CloseDialog()
+	
 func SetResponse(response):
 	$ResponseLabel.text = response
 
@@ -16,7 +21,7 @@ func ShowDialog():
 	# when Exclusive is enabled.
 	$ConfirmationDialog.call_deferred("popup")
 
-func HideDialog():
+func CloseDialog():
 	$ConfirmationDialog.visible = false
 
 func ShowMouseBlocker():
@@ -42,18 +47,3 @@ func _on_OpenDialogButton_pressed() -> void:
 
 func _on_ConfirmationDialog_about_to_show() -> void:
 	SetupPopupHideSignal()
-
-# godot-companion support functions below here
-func Reset():
-	HideDialog()
-	SetResponse("")
-	HideMouseBlocker()
-
-func GetSourcePath():
-	return _rootGitHubExamplePath + "confirmation-dialog.gd"
-
-func Stop():
-	pass
-
-func Start():
-	pass

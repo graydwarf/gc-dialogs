@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://examples/confirmation-dialog.gd" type="Script" id=1]
-[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/examples/confirmation-dialog.gd" type="Script" id=1]
+[ext_resource path="res://support/mouse-blocker-screen.tscn" type="PackedScene" id=2]
 
 [node name="Confirmation Dialog" type="Container"]
 anchor_right = 1.0
@@ -48,6 +48,7 @@ dialog_autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]
 [connection signal="about_to_show" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_about_to_show"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

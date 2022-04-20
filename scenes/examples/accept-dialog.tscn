@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://examples/accept-dialog.gd" type="Script" id=1]
-[ext_resource path="res://examples/mouse-block-panel-container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/examples/accept-dialog.gd" type="Script" id=1]
+[ext_resource path="res://support/mouse-blocker-screen.tscn" type="PackedScene" id=2]
 
 [node name="Accept Dialog" type="Container"]
 anchor_right = 1.0

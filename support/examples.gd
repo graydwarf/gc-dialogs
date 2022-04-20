@@ -1,54 +1,51 @@
 extends HBoxContainer
 
-onready var _panelContainer = $HSplitContainer/PanelContainer
-onready var _gridContainer = $HSplitContainer/VBoxContainer/HBoxContainer/ScrollContainer/GridContainer
+onready var _panelContainer = $HSplitContainer/ViewerContainer
+onready var _gridContainer = $HSplitContainer/Container/NavContainer/HBoxContainer/ScrollContainer/GridContainer
+
+var _pathToExamplesFolder = "res://scenes/examples/"
+var _pathToExampleNodeScene = "res://support/example-node.tscn"
 
 func _ready() -> void:
 	InitSignals()
-	LoadExampleNodes()
-#	TestLocalLoad()
-#
-#func TestLocalLoad():
-#	var a = OS.get_executable_path() 
-#	var dir = Directory.new()
-#	if dir.open(a) == OK:
-#		dir.list_dir_begin()
-#		var fileName = dir.get_next()
-#		while fileName != "":
-#			if dir.current_is_dir():
-#				print("Found directory: " + fileName)
-#			else:
-#				print("Found file: " + fileName)
-#			fileName = dir.get_next()
-#			var fileContent = LoadFile(fileName)
-#	else:
-#		print("An error occurred when trying to access the path.")
-#
-#func LoadFile(fileName):
-#	var file = File.new()
-#	file.open(fileName, File.READ)
-#	var content = file.get_as_text()
-#	file.close()
-#	return content
-	
+	var listOfExampleFileNames = LoadExampleFileNames()
+	CreateNavigationPanel(listOfExampleFileNames)
+
 func InitSignals():
-	DialogSignals.connect("LoadExample", self, "LoadExampleHandler")
+	gcSignals.connect("gcLoadExample", self, "gcLoadExample")
 
-func LoadExampleHandler(exampleName):
-	HideAllExamples()
-	for node in _panelContainer.get_children():
-		if node.name == exampleName:
-			node.visible = true
-			break
+func gcLoadExample(exampleFileName):
+	ClearPanelContainer()
+	var scenePath = _pathToExamplesFolder + exampleFileName + ".tscn"
+	var exampleNode = load(scenePath)
+	var exampleInstance = exampleNode.instance()
+	exampleInstance.visible = true
+	_panelContainer.add_child(exampleInstance)
 
-func LoadExampleNodes():
-	for node in _panelContainer.get_children():
-		var exampleNode = load("res://support/example-node.tscn")
+func ClearPanelContainer():
+	for childNode in _panelContainer.get_children():
+		_panelContainer.remove_child(childNode)
+		
+func LoadExampleFileNames():
+	var listOfExampleFileNames = []
+	var dir = Directory.new()
+	if dir.open(_pathToExamplesFolder) == OK:
+		dir.list_dir_begin()
+		var fileName = dir.get_next()
+		while fileName != "":
+			if dir.current_is_dir():
+				fileName = dir.get_next()
+				continue
+			else:
+				if fileName.ends_with(".tscn"):
+					listOfExampleFileNames.append(fileName)
+			fileName = dir.get_next()
+		dir.list_dir_end()
+	return listOfExampleFileNames
+
+func CreateNavigationPanel(listOfExampleFileNames):
+	for exampleName in listOfExampleFileNames:
+		var exampleNode = load(_pathToExampleNodeScene)
 		var exampleInstance = exampleNode.instance()
-		exampleInstance.SetText(node.name)
+		exampleInstance.SetText(exampleName.rstrip(".tscn"))
 		_gridContainer.add_child(exampleInstance)
-
-func HideAllExamples():
-	for node in _panelContainer.get_children():
-		node.Reset()
-		node.visible = false

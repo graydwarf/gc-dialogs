@@ -1,23 +1,25 @@
-extends Container
+extends Node2D
 
+func _ready():
+	InitSignals()
+
+func InitSignals():
+	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+
+func gcCancelDialog():
+	CloseDialog()
+	
 func SetResponse(response):
 	$ResponseLabel.text = response
 
 func ShowDialog():
-	$CustomDialog.visible = true
-
-func ShowMouseBlocker():
-	$MouseBlockPanelContainer.visible = true
-
-func HideMouseBlocker():
-	$MouseBlockPanelContainer.visible = false
+	$MouseBlockerScreen.visible = true
+	$Dialog.visible = true
+	$Dialog.show_modal(true)
 
 func CloseDialog():
-	HideMouseBlocker()
-	HideDialog()
-
-func HideDialog():
-	$CustomDialog.visible = false
+	$MouseBlockerScreen.visible = false
+	$Dialog.visible = false
 
 func _on_YesButton_pressed() -> void:
 	SetResponse("Yes, of course the user likes it.")
@@ -29,16 +31,8 @@ func _on_NoButton_pressed() -> void:
 
 func _on_OpenDialogButton_pressed() -> void:
 	SetResponse("")
-	ShowMouseBlocker()
+	gcSignals.emit_signal("gcShowMouseBlockerScreen")
 	ShowDialog()
 
-# godot-companion support functions below here
-func Reset():
+func _on_CancelButton_pressed():
 	CloseDialog()
-	SetResponse("")
-
-func Stop():
-	pass
-
-func Start():
-	pass

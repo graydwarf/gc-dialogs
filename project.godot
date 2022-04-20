@@ -15,11 +15,11 @@ _global_script_class_icons={
 [application]
 
 config/name="gc-dialogs"
-run/main_scene="res://dialog-examples.tscn"
+run/main_scene="res://scenes/gc-main.tscn"
 
 [autoload]
 
-DialogSignals="*res://singletons/dialog-signals.gd"
+gcSignals="*res://singletons/gc-signals.gd"
 
 [debug]
 

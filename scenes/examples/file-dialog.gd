@@ -1,9 +1,14 @@
 extends Container
 
-var _rootGitHubPath = "https://raw.githubusercontent.com/graydwarf/"
-var _rootGitHubProjectPath = _rootGitHubPath + "gc-dialogs/"
-var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
+func _ready():
+	InitSignals()
 
+func InitSignals():
+	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+
+func gcCancelDialog():
+	CloseDialog()
+	
 # Note: The MODE_SAVE_FILE dialog is for selecting where you want
 # to eventually save a file. It does not save the actual file at
 # the time of selection. It only returns the path so you could
@@ -13,13 +18,8 @@ var _rootGitHubExamplePath = _rootGitHubProjectPath + "main/examples/"
 # explicitly execute code to do so. The code to save a file is
 # not included in this demo. See File in help for how to do that.
 func ShowDialog(mode : int):
-	ShowMouseBlocker()
+	gcSignals.emit_signal("gcShowMouseBlockerScreen")
 	$FileDialog.mode = mode
-
-	# This is required in order to setup the popup_hide signal
-	# triggered by pressing the Cancel button. This approach
-	# also prevents the user from clicking behind the dialog
-	# when Exclusive is enabled.
 	$FileDialog.call_deferred("popup")
 
 	# Note: Files won't show in the dialog unless you set these
@@ -29,17 +29,8 @@ func ShowDialog(mode : int):
 
 	UpdateResponseTextForGivenMode(mode)
 
-# Apparently this signal can only be setup right
-# when the dialog is about to be shown which is
-# why we use call_deferred("popup")
-func SetupPopupHideSignal():
-	$FileDialog.connect("popup_hide",self, "CloseDialog")
-
 func CloseDialog():
-	HideMouseBlocker()
-	HideDialog()
-
-func HideDialog():
+	gcSignals.emit_signal("gcHideMouseBlockerScreen")
 	$FileDialog.visible = false
 
 # MODE_OPEN_FILE = 0 - The dialog allows selecting one, and only one file.
@@ -61,12 +52,6 @@ func UpdateResponseTextForGivenMode(mode):
 
 func SetResponseText(message):
 	$ResponseLabel.text = message
-
-func ShowMouseBlocker():
-	$MouseBlockPanelContainer.visible = true
-
-func HideMouseBlocker():
-	$MouseBlockPanelContainer.visible = false
 
 func _on_FileDialog_file_selected(path: String) -> void:
 	SetResponseText("File Selected - " + path)
@@ -95,19 +80,5 @@ func _on_OpenAnyDialogButton_pressed() -> void:
 func _on_OpenSaveFileDialogButton_pressed() -> void:
 	ShowDialog(4)
 
-func _on_FileDialog_about_to_show() -> void:
-	SetupPopupHideSignal()
-
-# godot-companion support functions below here
-func Reset():
+func _on_FileDialog_popup_hide():
 	CloseDialog()
-	SetResponseText("")
-
-func GetSourcePath():
-	return _rootGitHubExamplePath + "file-dialog.gd"
-
-func Stop():
-	pass
-
-func Start():
-	pass

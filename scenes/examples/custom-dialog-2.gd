@@ -1,5 +1,14 @@
 extends Node2D
 
+func _ready():
+	InitSignals()
+
+func InitSignals():
+	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+
+func gcCancelDialog():
+	CloseDialog()
+	
 func SetResponse(response):
 	$ResponseLabel.text = response
 
@@ -7,10 +16,10 @@ func ShowDialog():
 	$CustomDialog2.visible = true
 
 func ShowMouseBlocker():
-	$MouseBlockPanelContainer.visible = true
+	$MouseBlockerScreen.visible = true
 
 func HideMouseBlocker():
-	$MouseBlockPanelContainer.visible = false
+	$MouseBlockerScreen.visible = false
 
 func CloseDialog():
 	HideMouseBlocker()
@@ -31,14 +40,3 @@ func _on_OpenDialogButton_pressed() -> void:
 	SetResponse("")
 	ShowMouseBlocker()
 	ShowDialog()
-
-# godot-companion support functions below here
-func Reset():
-	CloseDialog()
-	SetResponse("")
-
-func Stop():
-	pass
-
-func Start():
-	pass
