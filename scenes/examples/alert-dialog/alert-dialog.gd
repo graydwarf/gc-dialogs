@@ -6,14 +6,7 @@ func SetResponse(response):
 func ShowDialog():
 	visible = true
 
-func ShowMouseBlocker():
-	$MouseBlockPanelContainer.visible = true
-
-func HideMouseBlocker():
-	$MouseBlockPanelContainer.visible = false
-
 func CloseDialog():
-	HideMouseBlocker()
 	HideDialog()
 
 func HideDialog():
@@ -27,10 +20,4 @@ func _on_OpenDialogButton_pressed():
 func Reset():
 	CloseDialog()
 	SetResponse("")
-
-func Stop():
-	pass
-
-func Start():
-	pass
 

@@ -1,0 +1,130 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/dialog-examples.gd" type="Script" id=1]
+
+[node name="Dialogs" type="PanelContainer"]
+self_modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="Examples" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Examples"]
+margin_right = 1010.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NavContainer" type="VBoxContainer" parent="Examples/HSplitContainer"]
+margin_right = 200.0
+margin_bottom = 586.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Examples/HSplitContainer/NavContainer"]
+margin_right = 200.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Examples/HSplitContainer/NavContainer/HBoxContainer"]
+self_modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+margin_right = 200.0
+margin_bottom = 586.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 586.0
+rect_min_size = Vector2( 200, 0 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 3
+
+[node name="accept-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_right = 136.0
+margin_bottom = 20.0
+text = "accept-dialog"
+
+[node name="alert-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 23.0
+margin_right = 136.0
+margin_bottom = 43.0
+text = "alert-dialog"
+
+[node name="confirmation-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 46.0
+margin_right = 136.0
+margin_bottom = 66.0
+text = "confirmation-dialog"
+
+[node name="custom-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 69.0
+margin_right = 136.0
+margin_bottom = 89.0
+text = "custom-dialog"
+
+[node name="custom-dialog-2-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 92.0
+margin_right = 136.0
+margin_bottom = 112.0
+text = "custom-dialog-2"
+
+[node name="file-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 115.0
+margin_right = 136.0
+margin_bottom = 135.0
+text = "file-dialog"
+
+[node name="nine-patch-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 138.0
+margin_right = 136.0
+margin_bottom = 158.0
+text = "nine-patch-dialog"
+
+[node name="windows-dialog-button" type="Button" parent="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer"]
+margin_top = 161.0
+margin_right = 136.0
+margin_bottom = 181.0
+text = "windows-dialog"
+
+[node name="ViewerContainer" type="PanelContainer" parent="Examples/HSplitContainer"]
+self_modulate = Color( 0.223529, 0.223529, 0.223529, 1 )
+margin_left = 212.0
+margin_right = 1010.0
+margin_bottom = 586.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/accept-dialog-button" to="." method="_on_acceptdialogbutton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/alert-dialog-button" to="." method="_on_alertdialogbutton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/confirmation-dialog-button" to="." method="_on_confirmationdialogbutton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/custom-dialog-button" to="." method="_on_customdialogbutton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/custom-dialog-2-button" to="." method="_on_customdialog2button_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/file-dialog-button" to="." method="_on_filedialogbutton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/nine-patch-button" to="." method="_on_NinePatchButton_pressed"]
+[connection signal="pressed" from="Examples/HSplitContainer/NavContainer/HBoxContainer/ScrollContainer/GridContainer/windows-dialog-button" to="." method="_on_windowsdialogbutton_pressed"]

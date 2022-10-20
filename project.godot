@@ -8,18 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "NinePatchDialog",
+"language": "GDScript",
+"path": "res://scenes/examples/nine-patch-dialog/nine-patch-dialog/nine-patch-dialog.gd"
+} ]
 _global_script_class_icons={
+"NinePatchDialog": ""
 }
 
 [application]
 
 config/name="gc-dialogs"
-run/main_scene="res://scenes/gc-main.tscn"
-
-[autoload]
-
-gcSignals="*res://singletons/gc-signals.gd"
+run/main_scene="res://scenes/dialog-examples.tscn"
 
 [debug]
 

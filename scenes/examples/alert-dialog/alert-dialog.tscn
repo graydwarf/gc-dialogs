@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/examples/alert-dialog.gd" type="Script" id=1]
-[ext_resource path="res://support/mouse-blocker-screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/examples/alert-dialog/alert-dialog.gd" type="Script" id=1]
 
 [node name="AlertDialog" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,10 +25,5 @@ text = "Open Alert Dialog"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="MouseBlockPanelContainer" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_right = 1024.0
-margin_bottom = 600.0
 
 [connection signal="pressed" from="OpenDialogButton" to="." method="_on_OpenDialogButton_pressed"]

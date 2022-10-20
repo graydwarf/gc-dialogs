@@ -1,13 +1,12 @@
 extends Container
 
+signal CancelDialog
+
 func _ready():
 	InitSignals()
 
 func InitSignals():
-	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
-
-func gcCancelDialog():
-	CloseDialog()
+	connect("CancelDialog", self, "CloseDialog")
 	
 # Note: The MODE_SAVE_FILE dialog is for selecting where you want
 # to eventually save a file. It does not save the actual file at
@@ -18,7 +17,6 @@ func gcCancelDialog():
 # explicitly execute code to do so. The code to save a file is
 # not included in this demo. See File in help for how to do that.
 func ShowDialog(mode : int):
-	gcSignals.emit_signal("gcShowMouseBlockerScreen")
 	$FileDialog.mode = mode
 	$FileDialog.call_deferred("popup")
 
@@ -30,7 +28,6 @@ func ShowDialog(mode : int):
 	UpdateResponseTextForGivenMode(mode)
 
 func CloseDialog():
-	gcSignals.emit_signal("gcHideMouseBlockerScreen")
 	$FileDialog.visible = false
 
 # MODE_OPEN_FILE = 0 - The dialog allows selecting one, and only one file.
@@ -82,3 +79,8 @@ func _on_OpenSaveFileDialogButton_pressed() -> void:
 
 func _on_FileDialog_popup_hide():
 	CloseDialog()
+
+func _input(inputEvent):
+	if inputEvent is InputEventKey and not inputEvent.echo:
+		if Input.is_key_pressed(KEY_ESCAPE):
+			CloseDialog()

@@ -1,26 +1,28 @@
 extends Node2D
 
+signal CancelDialog
+
 func _ready():
 	InitSignals()
 
 func InitSignals():
-	gcSignals.connect("gcCancelDialog", self, "gcCancelDialog")
+	connect("CancelDialog", self, "CloseDialog")
 
-func gcCancelDialog():
-	CloseDialog()
-	
 func SetResponse(response):
 	$ResponseLabel.text = response
 
 func ShowDialog():
-	$MouseBlockerScreen.visible = true
 	$Dialog.visible = true
 	$Dialog.show_modal(true)
 
 func CloseDialog():
-	$MouseBlockerScreen.visible = false
 	$Dialog.visible = false
 
+func _input(inputEvent):
+	if inputEvent is InputEventKey and not inputEvent.echo:
+		if Input.is_key_pressed(KEY_ESCAPE):
+			CloseDialog()
+			
 func _on_YesButton_pressed() -> void:
 	SetResponse("Yes, of course the user likes it.")
 	CloseDialog()
@@ -31,7 +33,6 @@ func _on_NoButton_pressed() -> void:
 
 func _on_OpenDialogButton_pressed() -> void:
 	SetResponse("")
-	gcSignals.emit_signal("gcShowMouseBlockerScreen")
 	ShowDialog()
 
 func _on_CancelButton_pressed():
